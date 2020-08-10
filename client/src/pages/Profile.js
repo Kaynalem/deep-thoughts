@@ -24,13 +24,19 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  if (!user?.username) {
+    return (
+      <h4>
+        You need to be logged in to see this page. Use the navigation links above to sign up or log in!
+      </h4>
+    );
+  }
   return (
     <div>
       <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {user.username}'s profile.
-        </h2>
+      <h2 className="bg-dark text-secondary p-3 display-inline-block">
+        Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+      </h2>
       </div>
 
       <div className="flex-row justify-space-between mb-3">
